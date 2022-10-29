@@ -14,67 +14,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define SIZE = 4
 
-int	**ft_init_tablero(int size)
+
+int	**ft_init_grid(int size)
 {
-	int contador;
-	int *grid_y[size];
-	int **grid_yp;
-	int *mallocp;
+	int counter; 
 
-	contador = 0;
-	grid_yp = &grid_y[0];
-	while (contador < size)
+	counter = 0; 
+	int** arr = (int**)malloc(4 * sizeof(int*));
+	while(counter < size)
 	{
-		mallocp = (int * ) malloc(size * sizeof(int));
-		grid_yp[contador] = mallocp;
-		contador++;
-	}
-
-	return (grid_yp);
+		arr[counter] = (int*)malloc(4 * sizeof(int));
+		counter++;
+	} 
+	return (arr);
 }
 
-/* void	ft_fill_with_1_to_n(int *tablero[], int pos, int axis, int size)
+void	ft_fill_with_1_to_n(int **grid, int pos, int axis, int size)
 {
-	int contador;
+	int count;
 
 	if (axis == 0 || axis == 2)
 	{
-		contador = 1;
+		count = 1;
 	}
 	else
 	{
-		contador = size;
+		count = size;
 	}
-	while (**tablero)
+	while (*grid)
 	{
 		if(axis == 1 || axis == 3)
 		{
-			tablero[axis][pos] = contador;
+			grid[axis][pos] = count;
 		}
 		else
 		{
-			tablero[pos][axis] = contador;
+			grid[pos][axis] = count;
 		}
 		if (axis == 1 || axis == 3)
 		{
-			contador--;
+			count--;
 		}
 		else
 		{
-			contador++;
+			count++;
 		}
 	}
-} */
+} 
 
-/* void	ft_fill_with_n(int *tablero, int pos, int axis)
+/* void	ft_fill_with_n(int *grid, int pos, int axis)
 {
-	int contador;
+	int count;
 
-	contador = 1;
+	count = 1;
 } */
 
-void	ft_clues_on_one_axis(int *tablero[], int **clues, int size, int axis)
+void	ft_clues_on_one_axis(int **grid, int **clues, int size, int axis)
 {
 	int pos;
 	//int axis_check;
@@ -82,40 +79,60 @@ void	ft_clues_on_one_axis(int *tablero[], int **clues, int size, int axis)
 	while (pos < size)
 	{
 		//printf("pos: %i, size: %i", pos, size);
-		printf("clue %d\n", clues[1][3]);
-	/* 	if (*clues[axis][pos] == size && *clues[axis + 1][pos] == 1)
+	 	if (clues[axis][pos] == size && clues[axis + 1][pos] == 1)
 		{
 			//llenamos la fila con 1 to size
-			//ft_fill_with_1_to_n(tablero, pos, axis, size);
+			ft_fill_with_1_to_n(grid, pos, axis, size);
 		}
-		else if (*clues[axis][pos] == 1 && *clues[axis + 1][pos] == size)
+		else if (clues[axis][pos] == 1 && clues[axis + 1][pos] == size)
 		{
 			// llenamos con size to 1
-			//ft_fill_with_1_to_n(tablero, pos, axis + 1, size);
+			ft_fill_with_1_to_n(grid, pos, axis + 1, size);
 		}
-		else if(*clues[axis][pos] == 1 && *clues[axis + 1][pos] != size)
+		else if(clues[axis][pos] == 1 && clues[axis + 1][pos] != size)
 		{
 			// colocamos el 4 solamente en ROW LEFT
-			//ft_fill_with_n(tablero, pos, axis);
+			//ft_fill_with_n(grid, pos, axis);
 		}
-		else if(*clues[axis + 1][pos] == 1 && *clues[axis][pos] != size)
+		else if(clues[axis + 1][pos] == 1 && clues[axis][pos] != size)
 		{
 			// colocamos el 4 solamente en ROW RIGHT
-			//ft_fill_with_n(tablero, pos, axis + 1);
-		} */
+			//ft_fill_with_n(grid, pos, axis + 1);
+		} 
 		pos++;
+	}
+}
+
+//DEBUG
+void	ft_show_grid(int **grid, int size){
+	int pos_x;
+	int pos_y;
+	
+	pos_x = 0;
+	pos_y = 0;
+	
+	while(pos_y < size)
+	{
+		while(pos_x < size)
+		{
+			printf("%d ", grid[pos_y][pos_x]);
+			pos_x++;
+		}
+		printf("\n");
+		pos_x = 0;
+		pos_y++;
 	}
 }
 
 
 void	ft_init(int size, int **clues)
 {
-	int **tablero;
-	tablero = ft_init_tablero(size);
+	int **grid;
+	grid = ft_init_grid(size);
 
-	ft_clues_on_one_axis(tablero, clues, size, 0);
-	ft_clues_on_one_axis(tablero, clues, size, 2);
+	//ft_clues_on_one_axis(grid, clues, size, 0);
+	//ft_clues_on_one_axis(grid, clues, size, 2);
 
-	int contador;
-	contador = 0;
+	ft_show_grid(grid, size);
+	ft_show_grid(clues, size);
 }
