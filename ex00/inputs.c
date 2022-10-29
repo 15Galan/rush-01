@@ -57,7 +57,7 @@ int	calculate_n(char *input)
 		input++;
 	}
 	n = 1;
-	while (n * n != x)
+	while (n * n <= x)
 	{
 		if (n * n == x)
 			return (n);
