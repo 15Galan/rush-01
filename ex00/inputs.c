@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:02:07 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/29 16:37:02 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:26:17 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@
 int	is_number(char c)
 {
 	return ('0' <= c && c <= '9');
+}
+
+/**
+ * @brief   Checks if a column/row value is a valid
+ *          one for a 'nxn' instance of the problem.
+ * 
+ * @param num   Value to check.
+ * @param n     Problem dimension.
+ * 
+ * @return  '1' if valid; '0' otherwise.
+ */
+int	is_valid_number(char num, int n)
+{
+	return ('1' <= num && num <= ('0' + n));
 }
 
 /**
@@ -55,17 +69,31 @@ int	calculate_n(char *input)
 }
 
 /**
- * @brief   Checks if a column/row value is a valid
- *          one for a nxn instance of the problem.
+ * @brief	Checks if an argument structure is valid.
+ * 			Estructure must be "n1 n2 n3 n4 n5 ...",
+ * 			numbers followed by spaces, except last one.
  * 
- * @param num   Value to check.
- * @param n     Problem dimension.
+ * @param input	Argument to check.
  * 
- * @return  '1' if valid; '0' otherwise.
+ * @return '1' if it's valid; '0' otherwise.
  */
-int	is_valid_number(char num, int n)
+int	is_valid_structure(char *input)
 {
-	return ('1' <= num && num <= ('0' + n));
+	int	valid;
+
+	if (!*input)
+		return (0);
+	valid = 1;
+	while (*input && valid)
+	{
+		if (is_number(*input) && *(input + 1) == ' ')
+			input += 2;
+		else if (is_number(*input) && !*(input + 1))
+			break ;
+		else
+			valid = 0;
+	}
+	return (valid);
 }
 
 /**
