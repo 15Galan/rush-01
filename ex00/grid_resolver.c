@@ -20,8 +20,8 @@ int	**ft_init_grid(int size)
 {
 	int	counter;
 	int	**arr;
-	int cleaner;
-	int x;
+	int	cleaner;
+	int	x;
 
 	cleaner = 0;
 	counter = 0;

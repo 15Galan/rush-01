@@ -31,5 +31,6 @@ int	main(int args, char **argv)
 	n = calculate_n(argv[1]);
 	board = create_board(argv[1], n);
 	print_board(board, n);
+	ft_init(n, board);
 	return (0);
 }
