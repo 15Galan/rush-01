@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:36:39 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 13:48:20 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:44:14 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int		**create_board(char **input, int n);
  * @param board		Board to print.
  * @param n			Board's dimension.
  */
-void	**print_board(int **board, int n);
+void	print_board(int **board, int n);
 
 #endif

@@ -6,11 +6,12 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:26:50 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 13:47:29 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:43:15 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 
 void	print_row(int *row, int n)
 {
@@ -21,7 +22,7 @@ void	print_row(int *row, int n)
 	while (i < n)
 	{
 		num = '0' + row[i];
-		write(1, num, 1);
+		write(1, &num, 1);
 	}
 	write(1, "\n", 1);
 }
@@ -48,7 +49,7 @@ int	**create_board(char **input, int n)
 	return (board);
 }
 
-void	**print_board(int **board, int n)
+void	print_board(int **board, int n)
 {
 	int	i;
 
