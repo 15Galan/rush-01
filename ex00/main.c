@@ -18,10 +18,14 @@ int	main()
 {
 
 	int colup[] = {4, 3, 2, 1};
-	//int colup[4];
 	int coldown[] = {1, 2, 2, 2};
 	int rowleft[] = {4, 3, 2, 1};
 	int rowright[] = {1, 2, 2, 2};
+
+	/* int colup[] = {2, 3, 1, 2};
+	int coldown[] = {3, 2, 1, 2};
+	int rowleft[] = {3, 1, 2, 2};
+	int rowright[] = {2, 1, 2, 1}; */
 
 	//colup = (int *) malloc(16);
 
