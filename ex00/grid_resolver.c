@@ -21,7 +21,6 @@ void	ft_show_grid(int **grid, int size);
 void	ft_fill_with_1_to_n(int **grid, int pos, int axis, int size);
 int		*ft_check_inserted(int **grid, int size);
 int		*ft_check_remaining(int *array, int size);
-void	ft_init_bruteforce(int **board, int* remaining_array, int **clues, int size);
 
 int	**ft_init_grid(int size)
 {
@@ -130,5 +129,4 @@ void	ft_init(int size, int **clues)
 	ft_show_grid(grid, size);
 	count_arr = ft_check_inserted(grid, size);
 	remaining_array = ft_check_remaining(count_arr, size);
-	ft_init_bruteforce(grid, remaining_array, clues, size);
 }
