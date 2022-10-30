@@ -19,6 +19,8 @@ void	ft_put_one_two_clues(int **grid, int pos, int axis, int size);
 void	ft_put_three_two_on_board(int **grid, int pos, int axis, int size);
 void	ft_show_grid(int **grid, int size);
 void	ft_fill_with_1_to_n(int **grid, int pos, int axis, int size);
+int		*ft_check_inserted(int **grid, int size);
+void	ft_check_remaining(int *array, int size);
 
 int	**ft_init_grid(int size)
 {
@@ -112,6 +114,10 @@ void	ft_clues_on_one_axis(int **grid, int **clues, int size, int axis)
 void	ft_init(int size, int **clues)
 {
 	int	**grid;
+	int *count_arr;
+	int contador;
+
+	contador = 0;
 
 	grid = ft_init_grid(size);
 	ft_clues_on_one_axis(grid, clues, size, 0);
@@ -124,4 +130,6 @@ void	ft_init(int size, int **clues)
 	ft_show_grid(grid, size);
 	printf("\n");
 	ft_show_grid(clues, size);
+	count_arr = ft_check_inserted(grid, size);
+	ft_check_remaining(count_arr, size);	
 }
