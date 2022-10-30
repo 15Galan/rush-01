@@ -6,13 +6,13 @@
 /*   By: jicortes <jicortes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:08:39 by jicortes          #+#    #+#             */
-/*   Updated: 2022/10/30 19:32:37 by jicortes         ###   ########.fr       */
+/*   Updated: 2022/10/30 20:03:26 by jicortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	extremos(int size, int **clues)
+int	extremos(int size, int **clues)
 {
 	int	n;
 
@@ -29,7 +29,7 @@ void	extremos(int size, int **clues)
 	return (1);
 }
 
-void	one_one(int size, int **clues)
+int	one_one(int size, int **clues)
 {
 	int	n;
 
@@ -46,7 +46,7 @@ void	one_one(int size, int **clues)
 	return (1);
 }
 
-void	one_n(int size, int **clues)
+int	one_n(int size, int **clues)
 {
 	int	n;
 
@@ -63,7 +63,7 @@ void	one_n(int size, int **clues)
 	return (1);
 }
 
-void	minmaxborder(int size, int **clues)
+int	minmaxborder(int size, int **clues)
 {
 	int	i;
 	int	j;
@@ -84,9 +84,17 @@ void	minmaxborder(int size, int **clues)
 				count2++;
 			j++;
 		}
-		if (count1 < 1 || count2 > 1)
-			return (0);
-		return (1);
-	i++;
+		i++;
 	}
+	if (count1 < 1 || count2 > 1)
+		return (0);
+	return (1);
+}
+
+int	board_verify(int size, int **clues)
+{
+	return (extremos(size, clues)
+		&& one_one(size, clues)
+		&& one_n(size, clues)
+		&& minmaxborder(size, clues));
 }
