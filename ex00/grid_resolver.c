@@ -15,13 +15,19 @@
 #include <stdlib.h>
 
 void	ft_fill_with_n(int **grid, int pos, int axis);
+void	ft_put_one_two_clues(int **grid, int pos, int axis, int size);
+void	ft_put_three_two_on_board(int **grid, int pos, int axis, int size);
+void	ft_show_grid(int **grid, int size);
+void	ft_fill_with_1_to_n(int **grid, int pos, int axis, int size);
+int		*ft_check_inserted(int **grid, int size);
+int		*ft_check_remaining(int *array, int size);
 
 int	**ft_init_grid(int size)
 {
 	int	counter;
 	int	**arr;
-	int cleaner;
-	int x;
+	int	cleaner;
+	int	x;
 
 	cleaner = 0;
 	counter = 0;
@@ -40,31 +46,41 @@ int	**ft_init_grid(int size)
 	return (arr);
 }
 
-void	ft_fill_with_1_to_n(int **grid, int pos, int axis, int size)
+void	ft_clues_one_and_two(int **grid, int **clues, int size, int axis)
 {
-	int	count;
-	int	while_counter;
+	int	pos;
 
-	while_counter = 0;
-	if (axis == 1 || axis == 3)
-		count = 1;
-	else
-		count = size;
-	while (while_counter < size)
+	pos = 0;
+	while (pos < size)
 	{
-		if (axis == 0 || axis == 1)
+		if (clues[axis][pos] == 1 && clues[axis + 1][pos] == 2)
 		{
-			grid[while_counter][pos] = count;
+			ft_put_one_two_clues(grid, pos, axis, size);
 		}
-		else
+		else if (clues[axis][pos] == 2 && clues[axis + 1][pos] == 1)
 		{
-			grid[pos][while_counter] = count;
+			ft_put_one_two_clues(grid, pos, axis + 1, size);
+		}		
+		pos++;
+	}
+}
+
+void	ft_clues_three_and_two(int **grid, int **clues, int size, int axis)
+{
+	int	pos;
+
+	pos = 0;
+	while (pos < size)
+	{
+		if (clues[axis][pos] == 3 && clues[axis + 1][pos] == 2)
+		{
+			ft_put_three_two_on_board(grid, pos, axis, size);
 		}
-		if (axis == 1 || axis == 3)
-			count++;
-		else
-			count--;
-		while_counter++;
+		else if (clues[axis][pos] == 2 && clues[axis + 1][pos] == 3)
+		{
+			ft_put_three_two_on_board(grid, pos, axis + 1, size);
+		}		
+		pos++;
 	}
 }
 
@@ -95,34 +111,22 @@ void	ft_clues_on_one_axis(int **grid, int **clues, int size, int axis)
 	}
 }
 
-void	ft_show_grid(int **grid, int size)
-{
-	int	pos_x;
-	int	pos_y;
-
-	pos_x = 0;
-	pos_y = 0;
-	while (pos_y < size)
-	{
-		while (pos_x < size)
-		{
-			printf("%d ", grid[pos_y][pos_x]);
-			pos_x++;
-		}
-		printf("\n");
-		pos_x = 0;
-		pos_y++;
-	}
-}
-
 void	ft_init(int size, int **clues)
 {
 	int	**grid;
+	int	*count_arr;
+	int	contador;
+	int	*remaining_array;
 
+	contador = 0;
 	grid = ft_init_grid(size);
 	ft_clues_on_one_axis(grid, clues, size, 0);
 	ft_clues_on_one_axis(grid, clues, size, 2);
+	ft_clues_three_and_two(grid, clues, size, 0);
+	ft_clues_three_and_two(grid, clues, size, 2);
+	ft_clues_one_and_two(grid, clues, size, 0);
+	ft_clues_one_and_two(grid, clues, size, 2);
 	ft_show_grid(grid, size);
-	printf("\n");
-	ft_show_grid(clues, size);
+	count_arr = ft_check_inserted(grid, size);
+	remaining_array = ft_check_remaining(count_arr, size);
 }
