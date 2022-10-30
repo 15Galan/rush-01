@@ -15,29 +15,29 @@
 
 void	ft_remaining_conditions(int **grid, int *arr, int pos_x, int pos_y)
 {
-	if(grid[pos_y][pos_x] == 1)
+	if (grid[pos_y][pos_x] == 1)
 	{
-		arr[0] +=  1;
+		arr[0] += 1;
 	}
-	else if(grid[pos_y][pos_x] == 2)
+	else if (grid[pos_y][pos_x] == 2)
 	{
-		arr[1] +=  1;
+		arr[1] += 1;
 	}
-	else if(grid[pos_y][pos_x] == 3)
+	else if (grid[pos_y][pos_x] == 3)
 	{
-		arr[2] +=  1;
+		arr[2] += 1;
 	}
-	else if(grid[pos_y][pos_x] == 4)
+	else if (grid[pos_y][pos_x] == 4)
 	{
-		arr[3] +=  1;
+		arr[3] += 1;
 	}
 }
 
-int		*ft_check_inserted(int **grid, int size)
+int	*ft_check_inserted(int **grid, int size)
 {
 	int	pos_x;
 	int	pos_y;
-	int *array;
+	int	*array;
 
 	array = (int *) malloc(4 * sizeof(int));
 	pos_x = 0;
@@ -45,7 +45,7 @@ int		*ft_check_inserted(int **grid, int size)
 	while (pos_y < size)
 	{
 		pos_x = 0;
-		while(pos_x < size)
+		while (pos_x < size)
 		{
 			ft_remaining_conditions(grid, array, pos_x, pos_y);
 			pos_x++;
@@ -55,17 +55,43 @@ int		*ft_check_inserted(int **grid, int size)
 	return (array);
 }
 
-void	ft_check_remaining(int *array, int size)
+int	*ft_create_remaining_array(int *array, int size, int remaining)
 {
-	int ones;
-	int twos;
-	int threes;
-	int fours;
+	int	contador;
+	int	*remaining_array;
+	int	insert;
+	int	copy;
 
-	ones = size - array[0];
-	twos = size - array[1];
-	threes = size - array[2];
-	fours = size - array[3];
+	insert = 1;
+	contador = 0;
+	remaining_array = (int *) malloc(remaining * sizeof(int));
+	copy = array[0];
+	while (contador < remaining)
+	{
+		remaining_array[contador] = insert;
+		copy--;
+		if (copy == 0)
+		{
+			insert++;
+			copy = array[insert - 1];
+		}
+		contador++;
+	}
+	return (remaining_array);
+}
 
-	
+int	*ft_check_remaining(int *array, int size)
+{
+	int	*new_array;
+	int	remaining;
+	int	*return_array;
+
+	new_array = (int *) malloc(4 * sizeof(int));
+	new_array[0] = size - array[0];
+	new_array[1] = size - array[1];
+	new_array[2] = size - array[2];
+	new_array[3] = size - array[3];
+	remaining = new_array[0] + new_array[1] + new_array[2] + new_array[3];
+	return_array = ft_create_remaining_array(new_array, size, remaining);
+	return (return_array);
 }
