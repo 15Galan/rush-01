@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:18:24 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 22:58:18 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 23:38:11 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 #include "board.h"
 #include "verify.h"
 
-void	ft_init(int size, int **clues);
+int	**ft_init(int size, int **clues);
 
 int	main(int args, char **argv)
 {
-	int	**board;
+	int	**borders;
+	int	**grid;
 	int	n;
 
 	if (args != 2 || !is_valid_input(argv[1]))
@@ -30,7 +31,8 @@ int	main(int args, char **argv)
 		return (0);
 	}
 	n = calculate_n(argv[1]);
-	board = create_board(argv[1], n);
-	ft_init(n, board);
+	borders = create_board(argv[1], n);
+	grid = ft_init(n, borders);
+	print_board(grid, n);
 	return (0);
 }
