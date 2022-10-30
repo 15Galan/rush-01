@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bruteforce.c                                       :+:      :+:    :+:   */
+/*   remaining_conditions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciriso-e <ciriso-e@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:19:10 by ciriso-e          #+#    #+#             */
-/*   Updated: 2022/10/30 19:19:24 by ciriso-e         ###   ########.fr       */
+/*   Updated: 2022/10/30 23:32:46 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	*ft_check_inserted(int **grid, int size)
 	return (array);
 }
 
-int	*ft_create_remaining_array(int *array, int size, int remaining)
+int	*ft_create_remaining_array(int *array, int remaining)
 {
 	int	contador;
 	int	*remaining_array;
@@ -92,6 +92,6 @@ int	*ft_check_remaining(int *array, int size)
 	new_array[2] = size - array[2];
 	new_array[3] = size - array[3];
 	remaining = new_array[0] + new_array[1] + new_array[2] + new_array[3];
-	return_array = ft_create_remaining_array(new_array, size, remaining);
+	return_array = ft_create_remaining_array(new_array, remaining);
 	return (return_array);
 }

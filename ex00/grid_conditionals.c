@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   grid_conditionals.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciriso-e <ciriso-e@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 15:50:23 by ciriso-e          #+#    #+#             */
-/*   Updated: 2022/10/30 15:50:26 by ciriso-e         ###   ########.fr       */
+/*   Updated: 2022/10/30 23:31:18 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 
 void	ft_fill_with_n(int **grid, int pos, int axis)
 {
@@ -31,7 +31,7 @@ void	ft_fill_with_n(int **grid, int pos, int axis)
 	}
 }
 
-void	ft_put_one_two_clues(int **grid, int pos, int axis, int size)
+void	ft_put_one_two_clues(int **grid, int pos, int axis)
 {
 	if (axis == 0)
 	{
@@ -55,7 +55,7 @@ void	ft_put_one_two_clues(int **grid, int pos, int axis, int size)
 	}
 }
 
-void	ft_put_three_two_on_board(int **grid, int pos, int axis, int size)
+void	ft_put_three_two_on_board(int **grid, int pos, int axis)
 {
 	if (axis == 0)
 	{

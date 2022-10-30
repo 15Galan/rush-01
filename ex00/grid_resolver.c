@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   grid_resolver.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciriso-e <ciriso-e@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:06:52 by ciriso-e          #+#    #+#             */
-/*   Updated: 2022/10/29 15:37:30 by ciriso-e         ###   ########.fr       */
+/*   Updated: 2022/10/30 23:29:57 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	ft_clues_on_one_axis(int **grid, int **clues, int size, int axis)
 	}
 }
 
-void	ft_init(int size, int **clues)
+int	**ft_init(int size, int **clues)
 {
 	int	**grid;
 	int	*count_arr;
@@ -126,7 +126,7 @@ void	ft_init(int size, int **clues)
 	ft_clues_three_and_two(grid, clues, size, 2);
 	ft_clues_one_and_two(grid, clues, size, 0);
 	ft_clues_one_and_two(grid, clues, size, 2);
-	ft_show_grid(grid, size);
 	count_arr = ft_check_inserted(grid, size);
 	remaining_array = ft_check_remaining(count_arr, size);
+	return (grid);
 }
