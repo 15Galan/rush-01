@@ -9,10 +9,15 @@
 /*   Updated: 2022/10/30 17:10:24 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <unistd.h>
 #include "inputs.h"
 #include "board.h"
+
+void	ft_init(int size, int **clues);
+int		**create_board(char **input, int n);
 
 int	main(int args, char **argv)
 {
@@ -24,5 +29,7 @@ int	main(int args, char **argv)
 	}
 	else
 		write(1, "Valid\n", 6);
+	board = create_board(&argv[1], 4);
+	ft_init(4, board);
 	return (0);
 }
