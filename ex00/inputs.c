@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:02:07 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 09:19:02 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 09:52:59 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ int	is_valid_structure(char *input)
 	return (valid);
 }
 
-int	valid_input(char *input)
+int	is_valid_input(char *input)
 {
 	int	n;
 
+	if (!is_valid_structure(input))
+		return (0);
 	n = calculate_n(input);
-	if (0 < n)
+	if (n < 0)
+		return (0);
+	while (*input)
 	{
-		while (*input)
-		{
-			if (!is_number(*input))
-				input++;
-			else if (!is_valid_number(*input, n))
-				return (0);
-		}
+		if (!(is_valid_number(*input, n) || *input == ' '))
+			return (0);
+		input++;
 	}
 	return (1);
 }

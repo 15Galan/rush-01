@@ -20,7 +20,7 @@ int	main(int args, char **argv)
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	else if (!valid_input(argv[1]))
+	else if (!is_valid_input(argv[1]))
 	{
 		write(1, "Error\n", 6);
 		return (2);

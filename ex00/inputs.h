@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:02:07 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 09:18:19 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 09:50:22 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int	is_valid_structure(char *input);
  * 
  * @return  '1' if valid; '0' otherwise.
  */
-int	valid_input(char *input);
+int	is_valid_input(char *input);
 
 #endif
