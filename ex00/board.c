@@ -29,24 +29,26 @@ void	print_row(int *row, int n)
 
 int	**create_board(char **input, int n)
 {
-	int	**board;
-	int	num;
-	int	i;
-	int	j;
+	int counter;
+	int x;
+	int **arr;
+	int input_counter;
 
-	board = (int **) malloc(n * sizeof(int *));
-	i = 0;
-	while (i < n)
+	counter = 0;
+	arr = (int**)malloc(4 * sizeof(int*));
+	while(counter < n)
 	{
-		j = 0;
-		while (j < n)
+		x = 0;
+		arr[counter] = (int*)malloc(4 * sizeof(int));
+		while (x < n)
 		{
-			board[i][j] = input[i][j] - '0';
-			j++;
+			arr[counter][x] = (int) input[0][input_counter] - 48;
+			x++;
+			input_counter += 2;
 		}
-		i++;
-	}
-	return (board);
+		counter++;
+	} 
+	return (arr);
 }
 
 void	print_board(int **board, int n)
