@@ -6,12 +6,14 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 13:26:50 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 15:43:15 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:52:24 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+
+int	is_number(char c);
 
 void	print_row(int *row, int n)
 {
@@ -23,32 +25,36 @@ void	print_row(int *row, int n)
 	{
 		num = '0' + row[i];
 		write(1, &num, 1);
+		if (i < n - 1)
+			write(1, " ", 1);
+		i++;
 	}
 	write(1, "\n", 1);
 }
 
-int	**create_board(char **input, int n)
+int	**create_board(char *input, int n)
 {
-	int counter;
-	int x;
-	int **arr;
-	int input_counter;
+	int	**board;
+	int	num;
+	int	i;
+	int	j;
 
-	counter = 0;
-	arr = (int**)malloc(4 * sizeof(int*));
-	while(counter < n)
+	i = 0;
+	num = 0;
+	board = (int **) malloc(4 * sizeof(int *));
+	while (i < n)
 	{
-		x = 0;
-		arr[counter] = (int*)malloc(4 * sizeof(int));
-		while (x < n)
+		j = 0;
+		board[i] = (int *) malloc(4 * sizeof(int));
+		while (j < n)
 		{
-			arr[counter][x] = (int) input[0][input_counter] - 48;
-			x++;
-			input_counter += 2;
+			board[i][j] = (int) input[num] - '0';
+			num += 2;
+			j++;
 		}
-		counter++;
-	} 
-	return (arr);
+		i++;
+	}
+	return (board);
 }
 
 void	print_board(int **board, int n)
