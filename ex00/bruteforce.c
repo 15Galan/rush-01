@@ -14,8 +14,33 @@
 #include <stdio.h>
 
 int	**ft_init_grid(int size);
+int	is_solution(int **borders, int **board, int n);
 
-void	ft_init_bruteforce(int **board, int* remaining_array, int size)
+int	ft_bruteforce_loop(int **board, int* remaining_array, int **clues, int size)
 {
-	printf("alohaaa");
+	int pos_x;
+	int pos_y;
+	int numbers;
+
+	pos_x = 0;
+	pos_y = 0;
+	while (pos_y < size)
+	{
+		pos_x = 0;
+		while (pos_x < size)
+		{
+			
+			pos_x++;
+		}
+		pos_y = 0;
+	}
+	return (1);
+}
+
+void	ft_init_bruteforce(int **board, int* remaining_array, int **clues, int size)
+{
+	int solucion;
+
+	solucion = 0;
+	//solucion = ft_bruteforce_loop(board, remaining_array, clues, size);
 }
