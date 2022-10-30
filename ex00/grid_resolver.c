@@ -20,12 +20,21 @@ int	**ft_init_grid(int size)
 {
 	int	counter;
 	int	**arr;
+	int cleaner;
+	int x;
 
+	cleaner = 0;
 	counter = 0;
 	arr = (int **) malloc(4 * sizeof(int *));
 	while (counter < size)
 	{
+		x = 0;
 		arr[counter] = (int *) malloc(4 * sizeof(int));
+		while (x < size)
+		{
+			arr[counter][x] = 0;
+			x++;
+		}
 		counter++;
 	}
 	return (arr);
