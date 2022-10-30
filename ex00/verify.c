@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:42:10 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 20:18:48 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 20:46:52 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,13 @@ int	is_solution(int **borders, int **board, int n)
 
 	sol = 1;
 	i = 0;
-	while (i < n * 1 && sol)
+	while (i < n && sol)
+	{
 		sol *= check_down(borders[0][i], board, i, n);
-	i = 0;
-	while (i < n * 2 && sol)
 		sol *= check_up(borders[1][i], board, i, n);
-	i = 0;
-	while (i < n * 3 && sol)
 		sol *= check_right(borders[2][i], board, i, n);
-	i = 0;
-	while (i < n * 4 && sol)
 		sol *= check_left(borders[3][i], board, i, n);
+		i++;
+	}
 	return (sol);
 }
