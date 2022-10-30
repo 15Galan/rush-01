@@ -30,48 +30,26 @@ void	print_row(int *row, int n)
 
 int	**create_board(char **input, int n)
 {
-	int counter;
-	int x;
-	int **arr;
-	int input_counter;
+	int	counter;
+	int	x;
+	int	**arr;
+	int	input_counter;
 
 	counter = 0;
-	arr = (int**)malloc(4 * sizeof(int*));
-	while(counter < n)
+	arr = (int **)malloc(4 * sizeof(int *));
+	while (counter < n)
 	{
 		x = 0;
-		arr[counter] = (int*)malloc(4 * sizeof(int));
+		arr[counter] = (int *)malloc(4 * sizeof(int));
 		while (x < n)
 		{
-			//write(1, &input[input_counter], 1);
-			//write(1, "\n", 1);
 			arr[counter][x] = (int) input[0][input_counter] - 48;
 			x++;
 			input_counter += 2;
 		}
 		counter++;
-	} 
-	return (arr);
-	
-	/* 
-	int	**board;
-	int	num;
-	int	i;
-	int	j;
-
-	board = (int **) malloc(n * sizeof(int *));
-	i = 0;
-	while (i < n)
-	{
-		j = 0;
-		while (j < n)
-		{
-			board[i][j] = input[i][j] - '0';
-			j++;
-		}
-		i++;
 	}
-	return (board); */
+	return (arr);
 }
 
 void	print_board(int **board, int n)
