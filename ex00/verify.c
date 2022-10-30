@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:42:10 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 20:46:52 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 23:13:44 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_up(int border, int **board, int col, int n)
 	jumps = 1;
 	while (board[i][col] < n)
 	{
-		if (board[i + 1][col] < board[i][col])
+		if (board[i][col] < board[i - 1][col])
 			jumps++;
 		i--;
 	}
@@ -73,7 +73,7 @@ int	check_left(int border, int **board, int row, int n)
 	jumps = 1;
 	while (board[row][i] < n)
 	{
-		if (board[row][i - 1] < board[row][i])
+		if (board[row][i] < board[row][i - 1])
 			jumps++;
 		i--;
 	}

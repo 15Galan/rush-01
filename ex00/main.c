@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:18:24 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 17:27:14 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 22:58:18 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include "inputs.h"
 #include "board.h"
+#include "verify.h"
 
 void	ft_init(int size, int **clues);
 
