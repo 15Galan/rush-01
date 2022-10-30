@@ -6,7 +6,7 @@
 /*   By: antgalan <antgalan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:18:24 by antgalan          #+#    #+#             */
-/*   Updated: 2022/10/30 09:23:30 by antgalan         ###   ########.fr       */
+/*   Updated: 2022/10/30 10:27:29 by antgalan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ int	main(int args, char **argv)
 	if (args != 2)
 	{
 		write(1, "Error\n", 6);
-		return (1);
+		return (0);
 	}
 	else if (!is_valid_input(argv[1]))
 	{
 		write(1, "Error\n", 6);
-		return (2);
+		return (0);
 	}
-	write(1, "Valid input: ", 13);
-	write(1, argv[1], 32);
+	write(1, "Valid\n", 6);
 	return (0);
 }
